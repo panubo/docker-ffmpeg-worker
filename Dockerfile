@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM panubo/s3fs:latest
 
 ADD https://github.com/99designs/cmdstalk/releases/download/v1.0.0/cmdstalk_linux_amd64.gz /tmp/
 ADD https://www.docker.com/favicons/apple-touch-icon-120x120.png /media/watermark.png
@@ -14,7 +14,5 @@ RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/so
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD entry.sh /
+ADD cmdstalk.sh /
 ADD commands /commands/
-
-ENTRYPOINT ["/entry.sh"]
